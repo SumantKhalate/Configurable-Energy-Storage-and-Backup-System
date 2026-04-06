@@ -183,7 +183,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     PB8     ------> I2C1_SCL
     PB9     ------> I2C1_SDA
     */
-    GPIO_InitStruct.Pin = I2C1_SCL_HOST_Pin|I2C1_SDA_HOST_Pin;
+    GPIO_InitStruct.Pin = I2C1_SCL_GAUGE_CONVERTER_Pin|I2C1_SDA_GAUGE_CONVERTER_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -216,7 +216,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     PB13     ------> I2C2_SCL
     PB14     ------> I2C2_SDA
     */
-    GPIO_InitStruct.Pin = I2C2_SCL_USB_GAUGE_Pin|I2C2_SDA_USB_GAUGE_Pin;
+    GPIO_InitStruct.Pin = I2C2_SCL_USB_CHARGER_Pin|I2C2_SDA_USB_CHARGER_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -246,14 +246,14 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**I2C4 GPIO Configuration
-    PB10     ------> I2C4_SCL
-    PB11     ------> I2C4_SDA
+    PB6     ------> I2C4_SCL
+    PB7     ------> I2C4_SDA
     */
-    GPIO_InitStruct.Pin = I2C4_SCL_CHARGER_CONVERTER_Pin|I2C4_SDA_CHARGER_CONVERTER_Pin;
+    GPIO_InitStruct.Pin = I2C4_SCL_QWIIC_Pin|I2C1_SDA_QWIIC_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF3_I2C4;
+    GPIO_InitStruct.Alternate = GPIO_AF5_I2C4;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* I2C4 clock enable */
@@ -279,9 +279,9 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
     PB8     ------> I2C1_SCL
     PB9     ------> I2C1_SDA
     */
-    HAL_GPIO_DeInit(I2C1_SCL_HOST_GPIO_Port, I2C1_SCL_HOST_Pin);
+    HAL_GPIO_DeInit(I2C1_SCL_GAUGE_CONVERTER_GPIO_Port, I2C1_SCL_GAUGE_CONVERTER_Pin);
 
-    HAL_GPIO_DeInit(I2C1_SDA_HOST_GPIO_Port, I2C1_SDA_HOST_Pin);
+    HAL_GPIO_DeInit(I2C1_SDA_GAUGE_CONVERTER_GPIO_Port, I2C1_SDA_GAUGE_CONVERTER_Pin);
 
   /* USER CODE BEGIN I2C1_MspDeInit 1 */
 
@@ -299,9 +299,9 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
     PB13     ------> I2C2_SCL
     PB14     ------> I2C2_SDA
     */
-    HAL_GPIO_DeInit(I2C2_SCL_USB_GAUGE_GPIO_Port, I2C2_SCL_USB_GAUGE_Pin);
+    HAL_GPIO_DeInit(I2C2_SCL_USB_CHARGER_GPIO_Port, I2C2_SCL_USB_CHARGER_Pin);
 
-    HAL_GPIO_DeInit(I2C2_SDA_USB_GAUGE_GPIO_Port, I2C2_SDA_USB_GAUGE_Pin);
+    HAL_GPIO_DeInit(I2C2_SDA_USB_CHARGER_GPIO_Port, I2C2_SDA_USB_CHARGER_Pin);
 
   /* USER CODE BEGIN I2C2_MspDeInit 1 */
 
@@ -316,12 +316,12 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
     __HAL_RCC_I2C4_CLK_DISABLE();
 
     /**I2C4 GPIO Configuration
-    PB10     ------> I2C4_SCL
-    PB11     ------> I2C4_SDA
+    PB6     ------> I2C4_SCL
+    PB7     ------> I2C4_SDA
     */
-    HAL_GPIO_DeInit(I2C4_SCL_CHARGER_CONVERTER_GPIO_Port, I2C4_SCL_CHARGER_CONVERTER_Pin);
+    HAL_GPIO_DeInit(I2C4_SCL_QWIIC_GPIO_Port, I2C4_SCL_QWIIC_Pin);
 
-    HAL_GPIO_DeInit(I2C4_SDA_CHARGER_CONVERTER_GPIO_Port, I2C4_SDA_CHARGER_CONVERTER_Pin);
+    HAL_GPIO_DeInit(I2C1_SDA_QWIIC_GPIO_Port, I2C1_SDA_QWIIC_Pin);
 
   /* USER CODE BEGIN I2C4_MspDeInit 1 */
 

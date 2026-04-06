@@ -118,17 +118,16 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     PC2     ------> ADC1_IN3
     PC3     ------> ADC1_IN4
     PA0     ------> ADC1_IN5
-    PA1     ------> ADC1_IN6
     */
-    GPIO_InitStruct.Pin = CHARGER_ADC_VIN1_USB_Pin|CHARGER_ADC_VIN2_Pin|CHARGER_ADC_SYS_Pin|CONVERTER_ADC_CONV_VOUT_Pin;
+    GPIO_InitStruct.Pin = CONVERTER_ADC_CONV_VOUT_Pin|CHARGER_ADC_SYS_Pin|CHARGER_ADC_VIN1_USB_Pin|CHARGER_ADC_VIN2_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = USB_ADC_VUSB_Pin|USB_ADC_VUSB_SW_Pin;
+    GPIO_InitStruct.Pin = USB_ADC_VUSB_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(USB_ADC_VUSB_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN ADC1_MspInit 1 */
 
@@ -153,11 +152,10 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PC2     ------> ADC1_IN3
     PC3     ------> ADC1_IN4
     PA0     ------> ADC1_IN5
-    PA1     ------> ADC1_IN6
     */
-    HAL_GPIO_DeInit(GPIOC, CHARGER_ADC_VIN1_USB_Pin|CHARGER_ADC_VIN2_Pin|CHARGER_ADC_SYS_Pin|CONVERTER_ADC_CONV_VOUT_Pin);
+    HAL_GPIO_DeInit(GPIOC, CONVERTER_ADC_CONV_VOUT_Pin|CHARGER_ADC_SYS_Pin|CHARGER_ADC_VIN1_USB_Pin|CHARGER_ADC_VIN2_Pin);
 
-    HAL_GPIO_DeInit(GPIOA, USB_ADC_VUSB_Pin|USB_ADC_VUSB_SW_Pin);
+    HAL_GPIO_DeInit(USB_ADC_VUSB_GPIO_Port, USB_ADC_VUSB_Pin);
 
   /* USER CODE BEGIN ADC1_MspDeInit 1 */
 

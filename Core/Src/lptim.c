@@ -81,7 +81,7 @@ void HAL_LPTIM_MspInit(LPTIM_HandleTypeDef* lptimHandle)
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**LPTIM2 GPIO Configuration
-    PA8     ------> LPTIM2_OUT
+    PA4     ------> LPTIM2_OUT
     */
     GPIO_InitStruct.Pin = UI_BUZZER_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -108,7 +108,7 @@ void HAL_LPTIM_MspDeInit(LPTIM_HandleTypeDef* lptimHandle)
     __HAL_RCC_LPTIM2_CLK_DISABLE();
 
     /**LPTIM2 GPIO Configuration
-    PA8     ------> LPTIM2_OUT
+    PA4     ------> LPTIM2_OUT
     */
     HAL_GPIO_DeInit(UI_BUZZER_GPIO_Port, UI_BUZZER_Pin);
 
